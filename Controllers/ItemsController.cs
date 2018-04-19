@@ -26,12 +26,12 @@ namespace ToDoList.Controllers
             return View(item);
         }
 
-        // [HttpGet("/items")]
-        // public ActionResult Index()
-        // {
-        //     List<Item> allItems = Item.GetAll();
-        //     return View(allItems);
-        // }
+        [HttpGet("/items")]
+        public ActionResult Index()
+        {
+            List<Item> allItems = Item.GetAll();
+            return View(allItems);
+        }
 
         [HttpGet("/items/new")]
         public ActionResult CreateForm()
