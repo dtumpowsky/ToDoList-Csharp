@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System;
+using Microsoft.AspNetCore.Mvc;
+using ToDoList.Models;
 
 namespace ToDoList.Models
 {
@@ -12,10 +14,10 @@ namespace ToDoList.Models
 
         public Category(string categoryName)
         {
-            _name = categoryName
-            _instances = Add(this);
-            _id = _instances.Count;
-            _items = new List<Item>{};
+          _name = categoryName;
+          _instances.Add(this);
+          _id = _instances.Count;
+          _items = new List<Item>{};
         }
 
         public string GetName()
@@ -35,12 +37,22 @@ namespace ToDoList.Models
 
         public static void Clear()
         {
-            return _instances.Clear();
+            _instances.Clear();
         }
 
-        public static Category Find(int SearchId)
+        public static Category Find(int searchId)
         {
             return _instances[searchId-1];
+        }
+
+        public List<Item> GetItems()
+        {
+            return _items;
+        }
+
+        public void AddItem(Item item)
+        {
+            _items.Add(item);
         }
     }
 }
